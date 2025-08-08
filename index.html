@@ -1,117 +1,137 @@
-<!DOCTYPE html><html lang="ar">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TMC | THE MAX CHARGE</title>
+  <title>شحن ألعاب وتطبيقات</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
       margin: 0;
-      padding: 0;
-      direction: rtl;
-    }
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1e2a38, #2e3e52);
+      color: #fff;
       text-align: center;
     }
+
     h1 {
-      margin: 0;
+      padding: 30px 0 10px;
+      font-size: 2em;
+      color: gold;
     }
+
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
-      padding: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
     }
+
     .card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
+      background-color: #fff;
+      border-radius: 15px;
       padding: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s;
     }
+
     .card:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
+
     .card img {
       width: 100%;
-      max-height: 150px;
+      height: 120px;
       object-fit: contain;
       margin-bottom: 10px;
     }
-    .card button {
-      background-color: #d4af37;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+
+    .card h3 {
+      color: #222;
+      font-size: 1.1em;
+      margin-bottom: 10px;
     }
-    .footer {
-      background-color: #1a1a1a;
+
+    .button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #0077cc;
       color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      color: #ccc;
+      font-size: 0.9em;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>THE MAX CHARGE - TMC</h1>
-  </header>  <div class="container">
+
+  <h1>خدمة شحن الألعاب والتطبيقات</h1>
+
+  <div class="container">
     <div class="card">
       <img src="pubg.png" alt="PUBG">
-      <h3>ببجي</h3>
-      <button onclick="location.href='pubg.html'">عرض الأسعار</button>
+      <h3>PUBG Mobile</h3>
+      <a href="pubg.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="freefire.png" alt="Free Fire">
-      <h3>فري فاير</h3>
-      <button onclick="location.href='freefire.html'">عرض الأسعار</button>
+      <h3>Free Fire</h3>
+      <a href="freefire.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="mlbb.png" alt="MLBB">
       <h3>MLBB</h3>
-      <button onclick="location.href='mlbb.html'">عرض الأسعار</button>
+      <a href="mlbb.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="jawaker.png" alt="Jawaker">
       <h3>جواكر</h3>
-      <button onclick="location.href='jawaker.html'">عرض الأسعار</button>
+      <a href="jawaker.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="tiktok.png" alt="TikTok">
-      <h3>تيك توك</h3>
-      <button onclick="location.href='tiktok.html'">عرض الأسعار</button>
+      <h3>TikTok</h3>
+      <a href="tiktok.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
-      <img src="bigo.png" alt="BIGO Live">
-      <h3>بيجو لايف</h3>
-      <button onclick="location.href='bigo.html'">عرض الأسعار</button>
+      <img src="bigo.png" alt="BIGO LIVE">
+      <h3>BIGO Live</h3>
+      <a href="bigo.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="googleplay.png" alt="Google Play">
-      <h3>بطاقات غوغل بلاي</h3>
-      <button onclick="location.href='googleplay.html'">عرض الأسعار</button>
+      <h3>Google Play</h3>
+      <a href="google.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
       <img src="playstation.png" alt="PlayStation">
-      <h3>بطاقات بلايستيشن</h3>
-      <button onclick="location.href='playstation.html'">عرض الأسعار</button>
+      <h3>PlayStation</h3>
+      <a href="playstation.html" class="button">عرض الأسعار</a>
     </div>
     <div class="card">
-      <img src="xbox.png" alt="Xbox">
-      <h3>بطاقات Xbox</h3>
-      <button onclick="location.href='xbox.html'">عرض الأسعار</button>
+      <img src="xbox.png" alt="XBOX">
+      <h3>XBOX</h3>
+      <a href="xbox.html" class="button">عرض الأسعار</a>
     </div>
-  </div>  <div class="footer">
-    <p>للتواصل عبر التليجرام: <a href="https://t.me/Max23321" style="color:#d4af37; text-decoration:none">@Max23321</a></p>
   </div>
+
+  <footer>
+    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
+  </footer>
+
 </body>
 </html>
