@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>THE MAX CHARGE - TMC</title>
   <style>
     body {
@@ -123,7 +123,6 @@
       text-decoration: underline;
     }
 
-    /* الزر العائم */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -142,25 +141,73 @@
     .floating-btn:hover {
       background-color: #00c5e0;
     }
+
+    /* 🔧 تحسين عرض الجوال */
+    @media (max-width: 768px) {
+      .main-header h1 {
+        font-size: 1.5em;
+      }
+
+      .main-header p {
+        font-size: 0.9em;
+      }
+
+      .section-title {
+        font-size: 1.3em;
+      }
+
+      .filter-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 20px;
+      }
+
+      .filter-buttons button {
+        width: 100%;
+        font-size: 1em;
+      }
+
+      .container {
+        grid-template-columns: 1fr !important;
+        padding: 15px;
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      .button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+
+      .floating-btn {
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 14px;
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header class="main-header">
     <h1>THE MAX CHARGE - TMC</h1>
-    <p>أفضل خدمات شحن الألعاب والتطبيقات  </p>
+    <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
   </header>
 
   <h2 class="section-title">الخدمات المتوفرة</h2>
 
-  <!-- أزرار الفلترة -->
+  <!-- ✅ أزرار الفلترة -->
   <div class="filter-buttons">
     <button onclick="filterItems('all')">الكل</button>
-    <button onclick="filterItems('game')">الألعاب</button>
-    <button onclick="filterItems('app')">التطبيقات</button>
+    <button onclick="filterItems('game')">🎮 الألعاب</button>
+    <button onclick="filterItems('app')">📱 التطبيقات</button>
   </div>
 
-  <!-- البطاقات -->
+  <!-- ✅ البطاقات -->
   <div class="container">
     <!-- ألعاب -->
     <div class="card" data-type="game">
@@ -219,7 +266,7 @@
     </div>
   </div>
 
-  <!-- زر تليجرام عائم -->
+  <!-- ✅ زر تواصل عبر التليجرام -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
     💬 تواصل الآن
   </a>
@@ -228,7 +275,7 @@
     <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
   </footer>
 
-  <!-- كود الفلترة -->
+  <!-- ✅ كود الفلترة -->
   <script>
     function filterItems(type) {
       const cards = document.querySelectorAll('.card');
@@ -237,12 +284,3 @@
         if (type === 'all' || itemType === type) {
           card.style.display = 'block';
         } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
-
-</body>
-</html>
-
