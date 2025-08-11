@@ -38,6 +38,26 @@
       margin: 20px 0;
     }
 
+    .filter-buttons {
+      margin-bottom: 30px;
+    }
+
+    .filter-buttons button {
+      background-color: #00eaff;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #00c5e0;
+    }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -107,7 +127,7 @@
     .floating-btn {
       position: fixed;
       bottom: 20px;
-      left: 20px; /* أو right: 20px; إذا أردته على الجهة اليمنى */
+      left: 20px;
       background-color: #00eaff;
       color: black;
       padding: 12px 18px;
@@ -131,57 +151,75 @@
     <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
   </header>
 
-  <h2 class="section-title">الألعاب المدعومة</h2>
+  <h2 class="section-title">الخدمات المتوفرة</h2>
 
+  <!-- أزرار الفلترة -->
+  <div class="filter-buttons">
+    <button onclick="filterItems('all')">الكل</button>
+    <button onclick="filterItems('game')">الألعاب</button>
+    <button onclick="filterItems('app')">التطبيقات</button>
+  </div>
+
+  <!-- البطاقات -->
   <div class="container">
-    <div class="card">
+    <!-- ألعاب -->
+    <div class="card" data-type="game">
       <img src="pubg.png" alt="PUBG">
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
-    <div class="card">
+
+    <div class="card" data-type="game">
       <img src="freefire.png" alt="Free Fire">
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
-    <div class="card">
+
+    <div class="card" data-type="game">
       <img src="mlbb.png" alt="MLBB">
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
-    <div class="card">
+
+    <div class="card" data-type="game">
       <img src="jawaker.png" alt="Jawaker">
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
-    <div class="card">
-      <img src="tiktok.png" alt="TikTok">
-      <h3>TikTok</h3>
-      <a href="tiktok.html" class="button">أريد الشحن</a>
-    </div>
-    <div class="card">
-      <img src="bigo.png" alt="BIGO LIVE">
-      <h3>BIGO Live</h3>
-      <a href="bigo.html" class="button">أريد الشحن</a>
-    </div>
-    <div class="card">
-      <img src="googleplay.png" alt="Google Play">
-      <h3>Google Play</h3>
-      <a href="google.html" class="button">أريد الشحن</a>
-    </div>
-    <div class="card">
+
+    <div class="card" data-type="game">
       <img src="playstation.png" alt="PlayStation">
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
-    <div class="card">
+
+    <div class="card" data-type="game">
       <img src="xbox.png" alt="XBOX">
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
+
+    <!-- تطبيقات -->
+    <div class="card" data-type="app">
+      <img src="tiktok.png" alt="TikTok">
+      <h3>TikTok</h3>
+      <a href="tiktok.html" class="button">أريد الشحن</a>
+    </div>
+
+    <div class="card" data-type="app">
+      <img src="bigo.png" alt="BIGO LIVE">
+      <h3>BIGO Live</h3>
+      <a href="bigo.html" class="button">أريد الشحن</a>
+    </div>
+
+    <div class="card" data-type="app">
+      <img src="googleplay.png" alt="Google Play">
+      <h3>Google Play</h3>
+      <a href="google.html" class="button">أريد الشحن</a>
+    </div>
   </div>
 
-  <!-- زر التليجرام العائم -->
+  <!-- زر تليجرام عائم -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
     💬 تواصل الآن
   </a>
@@ -189,6 +227,21 @@
   <footer>
     <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
   </footer>
+
+  <!-- كود الفلترة -->
+  <script>
+    function filterItems(type) {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const itemType = card.getAttribute('data-type');
+        if (type === 'all' || itemType === type) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
