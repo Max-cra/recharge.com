@@ -58,6 +58,11 @@
       background-color: #00c5e0;
     }
 
+    .filter-buttons button.active {
+      background-color: #ffaa00;
+      color: white;
+    }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -142,6 +147,11 @@
       background-color: #00c5e0;
     }
 
+    /* ✅ إخفاء البطاقات */
+    .hidden {
+      display: none !important;
+    }
+
     /* 🔧 تحسين عرض الجوال */
     @media (max-width: 768px) {
       .main-header h1 {
@@ -202,9 +212,9 @@
 
   <!-- ✅ أزرار الفلترة -->
   <div class="filter-buttons">
-    <button onclick="filterItems('all')">الكل</button>
-    <button onclick="filterItems('game')">🎮 الألعاب</button>
-    <button onclick="filterItems('app')">📱 التطبيقات</button>
+    <button class="active" onclick="filterItems(this, 'all')">الكل</button>
+    <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
+    <button onclick="filterItems(this, 'app')">📱 التطبيقات</button>
   </div>
 
   <!-- ✅ البطاقات -->
@@ -269,18 +279,23 @@
   <!-- ✅ زر تواصل عبر التليجرام -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
     💬 تواصل الآن
-  </a>
 
-  <footer>
-    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
-  </footer>
 
-  <!-- ✅ كود الفلترة -->
-  <script>
-    function filterItems(type) {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const itemType = card.getAttribute('data-type');
-        if (type === 'all' || itemType === type) {
-          card.style.display = 'block';
-        } else {
+
+Ask ChatGPT
+You're now using our basic model.
+To access more intelligence, create an account or log in.
+
+Log in
+
+Sign up for free
+
+
+
+Attach
+
+Search
+
+Voice
+
+ChatGPT
