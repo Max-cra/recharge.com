@@ -1,43 +1,144 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE MAX CHARGE - TMC</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: white;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شحن ألعاب وتطبيقات</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1e2a38, #2e3e52);
+      color: #fff;
+      text-align: center;
+    }
 
-        header {
-            padding: 50px 20px;
-        }
+    h1 {
+      padding: 30px 0 10px;
+      font-size: 2em;
+      color: gold;
+    }
 
-        .title-en {
-            font-size: 48px;
-            font-weight: bold;
-            color: #ffcc00;
-        }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .title-ar {
-            font-size: 24px;
-            font-weight: normal;
-            color: #ffffff;
-            margin-top: 10px;
-        }
-    </style>
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* أو استخدم cover حسب النتيجة الأفضل */
+  background-color: transparent;
+  border-radius: 0;
+  display: block;
+  margin: 0 auto;
+}
+.card {
+  background-color: transparent; /* أزل الخلفية البيضاء */
+  box-shadow: none; /* إزالة الظل إن أحببت */
+  padding: 10px;
+  text-align: center;
+}
+
+    .card h3 {
+      color: #222;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #0077cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #005fa3;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      color: #ccc;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <div class="title-en">THE MAX CHARGE - TMC</div>
-        <div class="title-ar">افضل خدمات شحن الالعاب والتطبيقات</div>
-    </header>
+<h1>THE MAX CHARGE - TMC<br><span style="font-size: 0.7em; color: #ccc;">أفضل خدمات شحن الألعاب والتطبيقات</span></h1>
+  <div class="container">
+    <div class="card">
+      <img src="pubg.png" alt="PUBG">
+      <h3>PUBG Mobile</h3>
+      <a href="pubg.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="freefire.png" alt="Free Fire">
+      <h3>Free Fire</h3>
+      <a href="freefire.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="mlbb.png" alt="MLBB">
+      <h3>MLBB</h3>
+      <a href="mlbb.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="jawaker.png" alt="Jawaker">
+      <h3>جواكر</h3>
+      <a href="jawaker.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="tiktok.png" alt="TikTok">
+      <h3>TikTok</h3>
+      <a href="tiktok.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="bigo.png" alt="BIGO LIVE">
+      <h3>BIGO Live</h3>
+      <a href="bigo.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="googleplay.png" alt="Google Play">
+      <h3>Google Play</h3>
+      <a href="google.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="playstation.png" alt="PlayStation">
+      <h3>PlayStation</h3>
+      <a href="playstation.html" class="button">عرض الأسعار</a>
+    </div>
+    <div class="card">
+      <img src="xbox.png" alt="XBOX">
+      <h3>XBOX</h3>
+      <a href="xbox.html" class="button">عرض الأسعار</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
+  </footer>
 
 </body>
 </html>
