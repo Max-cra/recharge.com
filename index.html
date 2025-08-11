@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>THE MAX CHARGE - TMC</title>
   <style>
     body {
@@ -147,12 +147,12 @@
       background-color: #00c5e0;
     }
 
-    /* ✅ إخفاء البطاقات */
+    /* إخفاء البطاقات */
     .hidden {
       display: none !important;
     }
 
-    /* 🔧 تحسين عرض الجوال */
+    /* تحسين عرض الجوال */
     @media (max-width: 768px) {
       .main-header h1 {
         font-size: 1.5em;
@@ -210,72 +210,93 @@
 
   <h2 class="section-title">الخدمات المتوفرة</h2>
 
-  <!-- ✅ أزرار الفلترة -->
   <div class="filter-buttons">
     <button class="active" onclick="filterItems(this, 'all')">الكل</button>
     <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
     <button onclick="filterItems(this, 'app')">📱 التطبيقات</button>
   </div>
 
-  <!-- ✅ البطاقات -->
   <div class="container">
     <!-- ألعاب -->
     <div class="card" data-type="game">
-      <img src="pubg.png" alt="PUBG">
+      <img src="pubg.png" alt="PUBG" />
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="game">
-      <img src="freefire.png" alt="Free Fire">
+      <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="game">
-      <img src="mlbb.png" alt="MLBB">
+      <img src="mlbb.png" alt="MLBB" />
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="game">
-      <img src="jawaker.png" alt="Jawaker">
+      <img src="jawaker.png" alt="Jawaker" />
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="game">
-      <img src="playstation.png" alt="PlayStation">
+      <img src="playstation.png" alt="PlayStation" />
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="game">
-      <img src="xbox.png" alt="XBOX">
+      <img src="xbox.png" alt="XBOX" />
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
 
     <!-- تطبيقات -->
     <div class="card" data-type="app">
-      <img src="tiktok.png" alt="TikTok">
+      <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
       <a href="tiktok.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="app">
-      <img src="bigo.png" alt="BIGO LIVE">
+      <img src="bigo.png" alt="BIGO LIVE" />
       <h3>BIGO Live</h3>
       <a href="bigo.html" class="button">أريد الشحن</a>
     </div>
 
     <div class="card" data-type="app">
-      <img src="googleplay.png" alt="Google Play">
+      <img src="googleplay.png" alt="Google Play" />
       <h3>Google Play</h3>
       <a href="google.html" class="button">أريد الشحن</a>
     </div>
   </div>
 
-  <!-- ✅ زر تواصل عبر التليجرام -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
     💬 تواصل الآن
+  </a>
+
+  <script>
+    function filterItems(button, type) {
+      // إزالة الكلاس 'active' من جميع الأزرار
+      const buttons = document.querySelectorAll('.filter-buttons button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      // إضافة الكلاس 'active' للزر الذي تم الضغط عليه
+      button.classList.add('active');
+
+      // عرض/إخفاء البطاقات بناءً على النوع
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const itemType = card.getAttribute('data-type');
+        if (type === 'all' || itemType === type) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
