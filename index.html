@@ -16,6 +16,7 @@
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 30px 20px;
+      text-align: center;
       margin-bottom: 20px;
     }
 
@@ -29,6 +30,12 @@
       color: #ccc;
       font-size: 1em;
       margin-top: 10px;
+    }
+
+    .section-title {
+      color: #00eaff;
+      font-size: 1.5em;
+      margin: 20px 0;
     }
 
     .filter-buttons {
@@ -45,6 +52,10 @@
       font-size: 1em;
       cursor: pointer;
       transition: background 0.3s ease;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #00c5e0;
     }
 
     .filter-buttons button.active {
@@ -73,6 +84,10 @@
       width: 100%;
       height: auto;
       object-fit: contain;
+      background-color: transparent;
+      border-radius: 0;
+      display: block;
+      margin: 0 auto;
     }
 
     .card h3 {
@@ -96,10 +111,6 @@
       background-color: #00c5e0;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -113,64 +124,80 @@
       text-decoration: none;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .floating-btn {
       position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
-    }
-
-    .modal-content {
-      background-color: #1e2a38;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 500px;
-      color: #fff;
-      text-align: center;
-      box-shadow: 0 0 20px #000;
-      position: relative;
-    }
-
-    .modal-content table {
-      width: 100%;
-      margin-top: 10px;
-      border-collapse: collapse;
-    }
-
-    .modal-content th, .modal-content td {
-      padding: 10px;
-      border: 1px solid #444;
-    }
-
-    .modal-content th {
+      bottom: 20px;
+      left: 20px;
       background-color: #00eaff;
-      color: #000;
+      color: black;
+      padding: 12px 18px;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      font-size: 0.95em;
+      text-decoration: none;
+      z-index: 1000;
+      transition: background 0.3s ease;
     }
 
-    .close {
-      position: absolute;
-      top: 10px; right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      color: white;
+    .floating-btn:hover {
+      background-color: #00c5e0;
     }
 
-    /* Responsive */
+    /* إخفاء البطاقات */
+    .hidden {
+      display: none !important;
+    }
+
+    /* تحسين عرض الجوال */
     @media (max-width: 768px) {
-      .main-header h1 { font-size: 1.5em; }
+      .main-header h1 {
+        font-size: 1.5em;
+      }
+
+      .main-header p {
+        font-size: 0.9em;
+      }
+
+      .section-title {
+        font-size: 1.3em;
+      }
+
       .filter-buttons {
         display: flex;
         flex-direction: column;
         gap: 10px;
         padding: 0 20px;
       }
-      .container { grid-template-columns: 1fr !important; padding: 15px; }
-      .button { font-size: 1em; padding: 10px 20px; }
+
+      .filter-buttons button {
+        width: 100%;
+        font-size: 1em;
+      }
+
+      .container {
+        grid-template-columns: 1fr !important;
+        padding: 15px;
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      .button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+
+      .floating-btn {
+        bottom: 15px;
+        left: 15px;
+        padding: 10px 14px;
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
@@ -181,6 +208,8 @@
     <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
   </header>
 
+  <h2 class="section-title">الخدمات المتوفرة</h2>
+
   <div class="filter-buttons">
     <button class="active" onclick="filterItems(this, 'all')">الكل</button>
     <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
@@ -188,42 +217,78 @@
   </div>
 
   <div class="container">
-    <!-- PUBG -->
+    <!-- ألعاب -->
     <div class="card" data-type="game">
       <img src="pubg.png" alt="PUBG" />
       <h3>PUBG Mobile</h3>
-      <a href="javascript:void(0)" class="button" onclick="openModal('pubg')">أريد الشحن</a>
+      <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
 
-    <!-- Free Fire -->
     <div class="card" data-type="game">
       <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
-      <a href="javascript:void(0)" class="button" onclick="openModal('freefire')">أريد الشحن</a>
+      <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
 
-    <!-- يمكنك إضافة المزيد بنفس الطريقة -->
-  </div>
+    <div class="card" data-type="game">
+      <img src="mlbb.png" alt="MLBB" />
+      <h3>MLBB</h3>
+      <a href="mlbb.html" class="button">أريد الشحن</a>
+    </div>
 
-  <footer>
-    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
-  </footer>
+    <div class="card" data-type="game">
+      <img src="jawaker.png" alt="Jawaker" />
+      <h3>جواكر</h3>
+      <a href="jawaker.html" class="button">أريد الشحن</a>
+    </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2 id="modal-title">عنوان الشحن</h2>
-      <table id="modal-table"></table>
+    <div class="card" data-type="game">
+      <img src="playstation.png" alt="PlayStation" />
+      <h3>PlayStation</h3>
+      <a href="playstation.html" class="button">أريد الشحن</a>
+    </div>
+
+    <div class="card" data-type="game">
+      <img src="xbox.png" alt="XBOX" />
+      <h3>XBOX</h3>
+      <a href="xbox.html" class="button">أريد الشحن</a>
+    </div>
+
+    <!-- تطبيقات -->
+    <div class="card" data-type="app">
+      <img src="tiktok.png" alt="TikTok" />
+      <h3>TikTok</h3>
+      <a href="tiktok.html" class="button">أريد الشحن</a>
+    </div>
+
+    <div class="card" data-type="app">
+      <img src="bigo.png" alt="BIGO LIVE" />
+      <h3>BIGO Live</h3>
+      <a href="bigo.html" class="button">أريد الشحن</a>
+    </div>
+
+    <div class="card" data-type="app">
+      <img src="googleplay.png" alt="Google Play" />
+      <h3>Google Play</h3>
+      <a href="google.html" class="button">أريد الشحن</a>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
+    💬 تواصل الآن
+  </a>
+
   <script>
     function filterItems(button, type) {
-      document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
+      // إزالة الكلاس 'active' من جميع الأزرار
+      const buttons = document.querySelectorAll('.filter-buttons button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      // إضافة الكلاس 'active' للزر الذي تم الضغط عليه
       button.classList.add('active');
-      document.querySelectorAll('.card').forEach(card => {
+
+      // عرض/إخفاء البطاقات بناءً على النوع
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
         const itemType = card.getAttribute('data-type');
         if (type === 'all' || itemType === type) {
           card.classList.remove('hidden');
@@ -232,55 +297,6 @@
         }
       });
     }
-
-    const prices = {
-      pubg: {
-        title: "تفاصيل شحن PUBG Mobile",
-        data: [
-          ["100 UC", "3 $"],
-          ["500 UC", "12 $"],
-          ["1000 UC", "22 $"],
-          ["2000 UC", "40 $"]
-        ]
-      },
-      freefire: {
-        title: "تفاصيل شحن Free Fire",
-        data: [
-          ["100 Diamonds", "2.5 $"],
-          ["500 Diamonds", "10 $"],
-          ["1000 Diamonds", "18 $"]
-        ]
-      }
-      // أضف ألعاب أخرى هنا
-    };
-
-    function openModal(gameKey) {
-      const modal = document.getElementById("modal");
-      const title = document.getElementById("modal-title");
-      const table = document.getElementById("modal-table");
-
-      const game = prices[gameKey];
-      if (!game) return;
-
-      title.textContent = game.title;
-      table.innerHTML = `
-        <tr><th>الكمية</th><th>السعر</th></tr>
-        ${game.data.map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`).join("")}
-      `;
-      modal.style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById("modal");
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
   </script>
-
 </body>
 </html>
