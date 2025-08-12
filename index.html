@@ -11,6 +11,18 @@
       background: linear-gradient(to bottom, #1e2a38, #2e3e52);
       color: #fff;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* ✨ تأثير دخول عام */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .main-header {
@@ -18,12 +30,18 @@
       padding: 30px 20px;
       text-align: center;
       margin-bottom: 20px;
+      animation: fadeDown 1s ease forwards;
+    }
+    @keyframes fadeDown {
+      0% {opacity:0; transform: translateY(-40px);}
+      100% {opacity:1; transform: translateY(0);}
     }
 
     .main-header h1 {
       color: #00eaff;
       margin: 0;
       font-size: 2em;
+      text-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
     }
 
     .main-header p {
@@ -36,6 +54,7 @@
       color: #00eaff;
       font-size: 1.5em;
       margin: 20px 0;
+      text-shadow: 0 0 8px #00eaff;
     }
 
     .filter-buttons {
@@ -51,16 +70,20 @@
       border-radius: 25px;
       font-size: 1em;
       cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 0 10px #00eaff;
+      transition: all 0.3s ease;
     }
 
     .filter-buttons button:hover {
       background-color: #00c5e0;
+      box-shadow: 0 0 15px #00eaff;
+      transform: translateY(-3px);
     }
 
     .filter-buttons button.active {
       background-color: #ffaa00;
       color: white;
+      box-shadow: 0 0 15px #ffaa00;
     }
 
     .container {
@@ -77,7 +100,12 @@
       border-radius: 15px;
       padding: 10px;
       text-align: center;
-      box-shadow: none;
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 234, 255, 0.4);
     }
 
     .card img {
@@ -88,6 +116,10 @@
       border-radius: 0;
       display: block;
       margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+    .card:hover img {
+      transform: scale(1.08);
     }
 
     .card h3 {
@@ -104,11 +136,14 @@
       text-decoration: none;
       border-radius: 8px;
       font-size: 0.9em;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px #00eaff;
     }
 
     .button:hover {
       background-color: #00c5e0;
+      box-shadow: 0 0 15px #00eaff;
+      transform: translateY(-2px);
     }
 
     footer {
@@ -122,6 +157,7 @@
     footer a {
       color: gold;
       text-decoration: none;
+      text-shadow: 0 0 6px gold;
     }
 
     footer a:hover {
@@ -140,179 +176,35 @@
       font-size: 0.95em;
       text-decoration: none;
       z-index: 1000;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .floating-btn:hover {
       background-color: #00c5e0;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00eaff;
     }
 
     .hidden {
-      display: none !important;
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+      transition: all 0.4s ease;
     }
 
     @media (max-width: 768px) {
-      .main-header h1 {
-        font-size: 1.5em;
-      }
-
-      .main-header p {
-        font-size: 0.9em;
-      }
-
-      .section-title {
-        font-size: 1.3em;
-      }
-
-      .filter-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 20px;
-      }
-
-      .filter-buttons button {
-        width: 100%;
-        font-size: 1em;
-      }
-
-      .container {
-        grid-template-columns: 1fr !important;
-        padding: 15px;
-      }
-
-      .card {
-        padding: 10px;
-      }
-
-      .button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-
-      .floating-btn {
-        bottom: 15px;
-        left: 15px;
-        padding: 10px 14px;
-        font-size: 0.9em;
-      }
+      .main-header h1 { font-size: 1.5em; }
+      .main-header p { font-size: 0.9em; }
+      .section-title { font-size: 1.3em; }
+      .filter-buttons { flex-direction: column; gap: 10px; padding: 0 20px; }
+      .filter-buttons button { width: 100%; font-size: 1em; }
+      .container { grid-template-columns: 1fr !important; padding: 15px; }
+      .button { font-size: 1em; padding: 10px 20px; }
+      .floating-btn { bottom: 15px; left: 15px; padding: 10px 14px; font-size: 0.9em; }
     }
   </style>
 </head>
 <body>
 
   <header class="main-header">
-    <h1>THE MAX CHARGE - TMC</h1>
-    <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
-  </header>
-
-  <h2 class="section-title">الخدمات المتوفرة</h2>
-
-  <div class="filter-buttons">
-    <button class="active" onclick="filterItems(this, 'all')">الكل</button>
-    <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
-    <button onclick="filterItems(this, 'app')">📱 التطبيقات</button>
-  </div>
-
-  <div class="container">
-    <div class="card" data-type="game">
-      <img src="pubg.png" alt="PUBG" />
-      <h3>PUBG Mobile</h3>
-      <a href="pubg.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="game">
-      <img src="freefire.png" alt="Free Fire" />
-      <h3>Free Fire</h3>
-      <a href="freefire.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="game">
-      <img src="mlbb.png" alt="MLBB" />
-      <h3>MLBB</h3>
-      <a href="mlbb.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="game">
-      <img src="jawaker.png" alt="Jawaker" />
-      <h3>جواكر</h3>
-      <a href="jawaker.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="game">
-      <img src="playstation.png" alt="PlayStation" />
-      <h3>PlayStation</h3>
-      <a href="playstation.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="game">
-      <img src="xbox.png" alt="XBOX" />
-      <h3>XBOX</h3>
-      <a href="xbox.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="app">
-      <img src="tiktok.png" alt="TikTok" />
-      <h3>TikTok</h3>
-      <a href="tiktok.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="app">
-      <img src="bigo.png" alt="BIGO LIVE" />
-      <h3>BIGO Live</h3>
-      <a href="bigo.html" class="button">أريد الشحن</a>
-    </div>
-
-    <div class="card" data-type="app">
-      <img src="googleplay.png" alt="Google Play" />
-      <h3>Google Play</h3>
-      <a href="google.html" class="button">أريد الشحن</a>
-    </div>
-  </div>
-
-  <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
-    💬 تواصل الآن
-  </a>
-
-  <!-- ✨ قسم المميزات -->
-  <section style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
-    <h2 style="color:#00eaff; margin-bottom: 20px;">لماذا تختارنا؟</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-        <h3 style="color:#ffaa00; margin-bottom: 10px;">⚡️ سرعة الشحن</h3>
-        <p style="color:#ccc; font-size: 0.95em;">نوفر شحن فوري في دقائق لضمان استمتاعك بالخدمة دون تأخير.</p>
-      </div>
-      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-        <h3 style="color:#ffaa00; margin-bottom: 10px;">💰 أسعار تنافسية</h3>
-        <p style="color:#ccc; font-size: 0.95em;">نقدم أرخص الأسعار الممكنة لجميع الخدمات مع جودة عالية.</p>
-      </div>
-      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
-        <h3 style="color:#ffaa00; margin-bottom: 10px;">🛡️ أمان وموثوقية</h3>
-        <p style="color:#ccc; font-size: 0.95em;">ضمان سرية معلوماتك وتعامل آمن مع جميع عمليات الشحن والدفع.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
-  </footer>
-
-  <script>
-    function filterItems(button, type) {
-      const buttons = document.querySelectorAll('.filter-buttons button');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const itemType = card.getAttribute('data-type');
-        if (type === 'all' || itemType === type) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-  </script>
-</body>
-</html>
+    <h1>THE
