@@ -147,12 +147,10 @@
       background-color: #00c5e0;
     }
 
-    /* إخفاء البطاقات */
     .hidden {
       display: none !important;
     }
 
-    /* تحسين عرض الجوال */
     @media (max-width: 768px) {
       .main-header h1 {
         font-size: 1.5em;
@@ -217,7 +215,6 @@
   </div>
 
   <div class="container">
-    <!-- ألعاب -->
     <div class="card" data-type="game">
       <img src="pubg.png" alt="PUBG" />
       <h3>PUBG Mobile</h3>
@@ -254,7 +251,6 @@
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
 
-    <!-- تطبيقات -->
     <div class="card" data-type="app">
       <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
@@ -278,15 +274,35 @@
     💬 تواصل الآن
   </a>
 
+  <!-- ✨ قسم المميزات -->
+  <section style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
+    <h2 style="color:#00eaff; margin-bottom: 20px;">لماذا تختارنا؟</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+        <h3 style="color:#ffaa00; margin-bottom: 10px;">⚡️ سرعة الشحن</h3>
+        <p style="color:#ccc; font-size: 0.95em;">نوفر شحن فوري في دقائق لضمان استمتاعك بالخدمة دون تأخير.</p>
+      </div>
+      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+        <h3 style="color:#ffaa00; margin-bottom: 10px;">💰 أسعار تنافسية</h3>
+        <p style="color:#ccc; font-size: 0.95em;">نقدم أرخص الأسعار الممكنة لجميع الخدمات مع جودة عالية.</p>
+      </div>
+      <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
+        <h3 style="color:#ffaa00; margin-bottom: 10px;">🛡️ أمان وموثوقية</h3>
+        <p style="color:#ccc; font-size: 0.95em;">ضمان سرية معلوماتك وتعامل آمن مع جميع عمليات الشحن والدفع.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
+  </footer>
+
   <script>
     function filterItems(button, type) {
-      // إزالة الكلاس 'active' من جميع الأزرار
       const buttons = document.querySelectorAll('.filter-buttons button');
       buttons.forEach(btn => btn.classList.remove('active'));
-      // إضافة الكلاس 'active' للزر الذي تم الضغط عليه
       button.classList.add('active');
 
-      // عرض/إخفاء البطاقات بناءً على النوع
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         const itemType = card.getAttribute('data-type');
