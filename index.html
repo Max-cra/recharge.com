@@ -120,7 +120,30 @@ body.loaded .main-header {
     .button:hover {
       background-color: #00c5e0;
     }
+/* Hover & glow */
+.card {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 10px 30px rgba(0,234,255,0.12);
+}
 
+.button {
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms;
+  box-shadow: 0 0 8px rgba(0,234,255,0.12);
+}
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,234,255,0.18);
+}
+
+/* Glow للعناوين والأزرار */
+.section-title { text-shadow: 0 0 8px rgba(0,234,255,0.12); }
+.main-header h1 { text-shadow: 0 0 12px rgba(0,234,255,0.18); }
+footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
+
+    
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -329,4 +352,5 @@ body.loaded .main-header {
   </script>
 </body>
 </html>
+
 
