@@ -12,16 +12,6 @@
       color: #fff;
       text-align: center;
     }
-/* Header fade-in on load */
-.main-header {
-  opacity: 0;
-  transform: translateY(-18px);
-  transition: opacity 600ms ease, transform 600ms ease;
-}
-body.loaded .main-header {
-  opacity: 1;
-  transform: translateY(0);
-}
 
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
@@ -120,30 +110,7 @@ body.loaded .main-header {
     .button:hover {
       background-color: #00c5e0;
     }
-/* Hover & glow */
-.card {
-  transition: transform 300ms ease, box-shadow 300ms ease;
-}
-.card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 10px 30px rgba(0,234,255,0.12);
-}
 
-.button {
-  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms;
-  box-shadow: 0 0 8px rgba(0,234,255,0.12);
-}
-.button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0,234,255,0.18);
-}
-
-/* Glow للعناوين والأزرار */
-.section-title { text-shadow: 0 0 8px rgba(0,234,255,0.12); }
-.main-header h1 { text-shadow: 0 0 12px rgba(0,234,255,0.18); }
-footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
-
-    
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -161,6 +128,7 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
       text-decoration: underline;
     }
 
+    /* الأزرار العائمة */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -178,6 +146,12 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
 
     .floating-btn:hover {
       background-color: #00c5e0;
+    }
+
+    .floating-whatsapp {
+      bottom: 70px;
+      background-color: #25D366;
+      color: white;
     }
 
     .hidden {
@@ -253,49 +227,41 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="mlbb.png" alt="MLBB" />
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="jawaker.png" alt="Jawaker" />
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="playstation.png" alt="PlayStation" />
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="xbox.png" alt="XBOX" />
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
       <a href="tiktok.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="bigo.png" alt="BIGO LIVE" />
       <h3>BIGO Live</h3>
       <a href="bigo.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="googleplay.png" alt="Google Play" />
       <h3>Google Play</h3>
@@ -303,9 +269,9 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
     </div>
   </div>
 
-  <a href="https://t.me/wasv234" class="floating-btn" target="_blank" title="تواصل عبر التليجرام">
-    💬 تواصل الآن
-  </a>
+  <!-- الأزرار العائمة -->
+  <a href="https://t.me/wasv234" class="floating-btn" target="_blank">💬 تواصل تليجرام</a>
+  <a href="https://wa.me/9647700000000" class="floating-btn floating-whatsapp" target="_blank">📱 واتساب</a>
 
   <!-- ✨ قسم المميزات -->
   <section style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
@@ -326,14 +292,20 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
     </div>
   </section>
 
+  <!-- قسم آراء العملاء -->
+  <section style="background: rgba(0,0,0,0.4); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px; text-align: center; overflow: hidden;">
+    <h2 style="color:#00eaff; margin-bottom: 20px;">آراء عملائنا</h2>
+    <div style="overflow: hidden; position: relative;">
+      <div id="testimonial-track" style="display: flex; gap: 20px; transition: transform 0.7s ease;">
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
   </footer>
 
   <script>
-  window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-  });
     function filterItems(button, type) {
       const buttons = document.querySelectorAll('.filter-buttons button');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -349,8 +321,53 @@ footer a { text-shadow: 0 0 6px rgba(255, 215, 0, 0.15); }
         }
       });
     }
+
+    // آراء العملاء
+    const testimonials = [
+      "خدمة ممتازة وسرعة في الشحن! ⭐⭐⭐⭐⭐",
+      "أفضل أسعار وأسرع خدمة، شكراً لكم!",
+      "ثقة وأمان بالتعامل، أنصح الجميع!",
+      "جربت أكثر من مرة وكل مرة أفضل من السابقة!",
+      "دعم سريع ومحترم جداً.",
+      "جودة عالية وسرعة استجابة."
+    ];
+
+    const track = document.getElementById("testimonial-track");
+    let index = 0;
+
+    function renderTestimonials() {
+      track.innerHTML = "";
+      for (let i = 0; i < 3; i++) {
+        let tIndex = (index + i) % testimonials.length;
+        let div = document.createElement("div");
+        div.textContent = testimonials[tIndex];
+        div.style.background = "#222";
+        div.style.padding = "15px";
+        div.style.borderRadius = "10px";
+        div.style.flex = "1 1 calc(33.33% - 20px)";
+        div.style.color = "#fff";
+        div.style.fontSize = "1em";
+        track.appendChild(div);
+      }
+    }
+
+    function nextTestimonials() {
+      track.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        index = (index + 3) % testimonials.length;
+        renderTestimonials();
+        track.style.transition = "none";
+        track.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          track.style.transition = "transform 0.7s ease";
+          track.style.transform = "translateX(0)";
+        }, 50);
+      }, 700);
+    }
+
+    renderTestimonials();
+    setInterval(nextTestimonials, 4000);
   </script>
+
 </body>
 </html>
-
-
