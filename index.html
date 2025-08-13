@@ -12,6 +12,16 @@
       color: #fff;
       text-align: center;
     }
+/* Header fade-in on load */
+.main-header {
+  opacity: 0;
+  transform: translateY(-18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+body.loaded .main-header {
+  opacity: 1;
+  transform: translateY(0);
+}
 
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
@@ -298,6 +308,9 @@
   </footer>
 
   <script>
+  window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+  });
     function filterItems(button, type) {
       const buttons = document.querySelectorAll('.filter-buttons button');
       buttons.forEach(btn => btn.classList.remove('active'));
@@ -316,3 +329,4 @@
   </script>
 </body>
 </html>
+
