@@ -13,6 +13,18 @@
       text-align: center;
     }
 
+    /* تأثير الظهور عند التمرير */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ===== رأس الصفحة ===== */
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
@@ -267,69 +279,69 @@
 </head>
 <body>
 
-  <header class="main-header">
+  <header class="main-header reveal">
     <h1>THE MAX CHARGE - TMC</h1>
     <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
   </header>
 
-  <h2 class="section-title">الخدمات المتوفرة</h2>
+  <h2 class="section-title reveal">الخدمات المتوفرة</h2>
 
-  <div class="filter-buttons">
+  <div class="filter-buttons reveal">
     <button class="active" onclick="filterItems(this, 'all')">الكل</button>
     <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
     <button onclick="filterItems(this, 'app')">📱 التطبيقات</button>
   </div>
 
   <div class="container">
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="pubg.png" alt="PUBG" />
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="mlbb.png" alt="MLBB" />
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="jawaker.png" alt="Jawaker" />
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="playstation.png" alt="PlayStation" />
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="game">
+    <div class="card reveal" data-type="game">
       <img src="xbox.png" alt="XBOX" />
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="app">
+    <div class="card reveal" data-type="app">
       <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
       <a href="tiktok.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="app">
+    <div class="card reveal" data-type="app">
       <img src="bigo.png" alt="BIGO LIVE" />
       <h3>BIGO Live</h3>
       <a href="bigo.html" class="button">أريد الشحن</a>
     </div>
 
-    <div class="card" data-type="app">
+    <div class="card reveal" data-type="app">
       <img src="googleplay.png" alt="Google Play" />
       <h3>Google Play</h3>
       <a href="google.html" class="button">أريد الشحن</a>
@@ -337,13 +349,13 @@
   </div>
 
   <!-- زر التليجرام -->
-  <a href="https://t.me/wasv234" class="floating-btn" target="_blank">💬 تواصل تليجرام</a>
+  <a href="https://t.me/wasv234" class="floating-btn reveal" target="_blank">💬 تواصل تليجرام</a>
 
   <!-- زر الواتساب -->
-  <a href="https://wa.me/9647700000000" class="floating-btn whatsapp" target="_blank">📱 واتساب</a>
+  <a href="https://wa.me/9647700000000" class="floating-btn whatsapp reveal" target="_blank">📱 واتساب</a>
 
   <!-- قسم المميزات -->
-  <section style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
+  <section class="reveal" style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
     <h2 style="color:#00eaff; margin-bottom: 20px;">لماذا تختارنا؟</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
       <div style="flex: 1 1 250px; background: #222; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">
@@ -362,7 +374,7 @@
   </section>
 
   <!-- قسم آراء العملاء -->
-  <section class="reviews-section">
+  <section class="reviews-section reveal">
     <h2 class="reviews-title">💬 آراء عملائنا</h2>
     <div class="reviews-container" id="reviewsContainer">
       <div class="review-card">
@@ -380,7 +392,7 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="reveal">
     <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
   </footer>
 
@@ -410,6 +422,22 @@
       currentReview = (currentReview + 1) % reviews.length;
       reviewsContainer.style.transform = `translateX(-${currentReview * 100}%)`;
     }, 3000);
+
+    // تشغيل تأثير الظهور عند التمرير
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const revealTop = element.getBoundingClientRect().top;
+        const revealPoint = 50;
+        if (revealTop < windowHeight - revealPoint) {
+          element.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
   </script>
 </body>
 </html>
