@@ -1,350 +1,100 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>THE MAX CHARGE - TMC</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #1e2a38, #2e3e52);
-      color: #fff;
-      text-align: center;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Recharge</title>
+<link rel="stylesheet" href="style.css" />
 
-    /* ===== تأثير الكشف عند التمرير ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== رأس الصفحة ===== */
-    .main-header {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 30px 20px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .main-header h1 {
-      color: #00eaff;
-      margin: 0;
-      font-size: 2em;
-    }
-
-    .main-header p {
-      color: #ccc;
-      font-size: 1em;
-      margin-top: 10px;
-    }
-
-    /* ===== العناوين ===== */
-    .section-title {
-      color: #00eaff;
-      font-size: 1.5em;
-      margin: 20px 0;
-    }
-
-    /* ===== أزرار الفلترة ===== */
-    .filter-buttons {
-      margin-bottom: 30px;
-    }
-
-    .filter-buttons button {
-      background-color: #00eaff;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 5px;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .filter-buttons button:hover {
-      background-color: #00c5e0;
-    }
-
-    .filter-buttons button.active {
-      background-color: #ffaa00;
-      color: white;
-    }
-
-    /* ===== شبكة البطاقات ===== */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .card {
-      background-color: transparent;
-      border-radius: 15px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* تأثير تمرير المؤشر */
-    .card:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    }
-
-    .card img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      background-color: transparent;
-      border-radius: 0;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .card h3 {
-      color: #fff;
-      font-size: 1.1em;
-      margin-bottom: 10px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #00eaff;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 0.9em;
-      transition: background 0.3s;
-    }
-
-    .button:hover {
-      background-color: #00c5e0;
-    }
-
-    /* ===== الفوتر ===== */
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.2);
-      color: #ccc;
-      font-size: 0.9em;
-    }
-
-    footer a {
-      color: gold;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* ===== الأزرار العائمة ===== */
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #00eaff;
-      color: black;
-      padding: 12px 18px;
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      font-size: 0.95em;
-      text-decoration: none;
-      z-index: 1000;
-      transition: background 0.3s ease;
-    }
-
-    .floating-btn:hover {
-      background-color: #00c5e0;
-    }
-
-    /* زر واتساب */
-    .floating-btn.whatsapp {
-      left: 150px;
-      background-color: #25D366;
-      color: white;
-    }
-
-    .floating-btn.whatsapp:hover {
-      background-color: #1ebe5c;
-    }
-
-    /* ===== قسم آراء العملاء ===== */
-    .reviews-section {
-      margin: 50px auto;
-      max-width: 900px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .reviews-title {
-      color: #ffaa00;
-      margin-bottom: 20px;
-    }
-
-    .reviews-container {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .review-card {
-      flex: 0 0 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .review-card p {
-      color: #ccc;
-      font-size: 1em;
-      margin-bottom: 10px;
-    }
-
-    .review-card span {
-      color: #00eaff;
-      font-weight: bold;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    /* ===== تصميم الهاتف ===== */
-    @media (max-width: 768px) {
-      .main-header h1 {
-        font-size: 1.5em;
-      }
-
-      .main-header p {
-        font-size: 0.9em;
-      }
-
-      .section-title {
-        font-size: 1.3em;
-      }
-
-      .filter-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 20px;
-      }
-
-      .filter-buttons button {
-        width: 100%;
-        font-size: 1em;
-      }
-
-      .container {
-        grid-template-columns: 1fr !important;
-        padding: 15px;
-      }
-
-      .card {
-        padding: 10px;
-      }
-
-      .button {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-
-      .floating-btn {
-        bottom: 15px;
-        left: 15px;
-        padding: 10px 14px;
-        font-size: 0.9em;
-      }
-
-      .floating-btn.whatsapp {
-        left: 120px;
-      }
-    }
-  </style>
+<style>
+/* ===== أنيميشن ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-zoom.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+</style>
 </head>
 <body>
 
-  <header class="main-header reveal">
-    <h1>THE MAX CHARGE - TMC</h1>
-    <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
-  </header>
+<header class="reveal-zoom">
+  <h1>مرحبا بك في Recharge</h1>
+  <p class="reveal">أفضل مكان لشحن رصيدك بسرعة وسهولة</p>
+</header>
 
-  <h2 class="section-title reveal">الخدمات المتوفرة</h2>
+<section>
+  <h2 class="reveal">خدماتنا</h2>
+  <div class="card reveal-left">خدمة 1</div>
+  <div class="card reveal">خدمة 2</div>
+  <div class="card reveal-right">خدمة 3</div>
+</section>
 
-  <div class="filter-buttons reveal">
-    <button class="active" onclick="filterItems(this, 'all')">الكل</button>
-    <button onclick="filterItems(this, 'game')">🎮 الألعاب</button>
-    <button onclick="filterItems(this, 'app')">📱 التطبيقات</button>
-  </div>
+<section>
+  <h2 class="reveal">الباقات</h2>
+  <div class="card reveal-left">باقة A</div>
+  <div class="card reveal">باقة B</div>
+  <div class="card reveal-right">باقة C</div>
+</section>
 
-  <div class="container">
-    <div class="card reveal" data-type="game">
-      <img src="pubg.png" alt="PUBG" />
-      <h3>PUBG Mobile</h3>
-      <a href="pubg.html" class="button">أريد الشحن</a>
-    </div>
-    <!-- باقي البطاقات تضيف لها نفس class="card reveal" -->
-  </div>
+<section>
+  <h2 class="reveal">آراء العملاء</h2>
+  <div class="review reveal">"خدمة ممتازة"</div>
+  <div class="review reveal">"سرعة كبيرة"</div>
+  <div class="review reveal">"تعامل رائع"</div>
+</section>
 
-  <!-- باقي الكود كما هو ... -->
+<footer class="reveal">
+  <p>© 2025 جميع الحقوق محفوظة</p>
+</footer>
 
-  <script>
-    function filterItems(button, type) {
-      const buttons = document.querySelectorAll('.filter-buttons button');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const itemType = card.getAttribute('data-type');
-        if (type === 'all' || itemType === type) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+<script>
+// كشف العناصر عند التمرير
+function revealOnScroll() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-zoom, .reveal-left, .reveal-right');
+  const windowHeight = window.innerHeight;
+  reveals.forEach((el, i) => {
+    const revealTop = el.getBoundingClientRect().top;
+    if (revealTop < windowHeight - 50) {
+      setTimeout(() => {
+        el.classList.add('active');
+      }, i * 150); // تأخير تدريجي
     }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
 
-    // شريط التقييمات المتحرك
-    let currentReview = 0;
-    const reviews = document.querySelectorAll('.review-card');
-    const reviewsContainer = document.getElementById('reviewsContainer');
-
-    setInterval(() => {
-      currentReview = (currentReview + 1) % reviews.length;
-      reviewsContainer.style.transform = `translateX(-${currentReview * 100}%)`;
-    }, 3000);
-
-    // تأثير الكشف عند التمرير
-    function revealElements() {
-      const reveals = document.querySelectorAll('.reveal');
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const revealTop = reveals[i].getBoundingClientRect().top;
-        const revealPoint = 50;
-
-        if (revealTop < windowHeight - revealPoint) {
-          reveals[i].classList.add('active');
-        }
-      }
-    }
-    window.addEventListener('scroll', revealElements);
-    window.addEventListener('load', revealElements);
-  </script>
 </body>
 </html>
