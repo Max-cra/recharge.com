@@ -13,7 +13,6 @@
       text-align: center;
     }
 
-    /* ===== رأس الصفحة ===== */
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 30px 20px;
@@ -33,14 +32,12 @@
       margin-top: 10px;
     }
 
-    /* ===== العناوين ===== */
     .section-title {
       color: #00eaff;
       font-size: 1.5em;
       margin: 20px 0;
     }
 
-    /* ===== أزرار الفلترة ===== */
     .filter-buttons {
       margin-bottom: 30px;
     }
@@ -66,7 +63,6 @@
       color: white;
     }
 
-    /* ===== شبكة البطاقات ===== */
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -82,13 +78,6 @@
       padding: 10px;
       text-align: center;
       box-shadow: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* تأثير تمرير المؤشر */
-    .card:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
 
     .card img {
@@ -122,7 +111,6 @@
       background-color: #00c5e0;
     }
 
-    /* ===== الفوتر ===== */
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -140,7 +128,7 @@
       text-decoration: underline;
     }
 
-    /* ===== الأزرار العائمة ===== */
+    /* الأزرار العائمة */
     .floating-btn {
       position: fixed;
       bottom: 20px;
@@ -160,59 +148,16 @@
       background-color: #00c5e0;
     }
 
-    /* زر واتساب */
-    .floating-btn.whatsapp {
-      left: 150px;
+    .floating-whatsapp {
+      bottom: 70px;
       background-color: #25D366;
       color: white;
-    }
-
-    .floating-btn.whatsapp:hover {
-      background-color: #1ebe5c;
-    }
-
-    /* ===== قسم آراء العملاء ===== */
-    .reviews-section {
-      margin: 50px auto;
-      max-width: 900px;
-      background: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .reviews-title {
-      color: #ffaa00;
-      margin-bottom: 20px;
-    }
-
-    .reviews-container {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-
-    .review-card {
-      flex: 0 0 100%;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .review-card p {
-      color: #ccc;
-      font-size: 1em;
-      margin-bottom: 10px;
-    }
-
-    .review-card span {
-      color: #00eaff;
-      font-weight: bold;
     }
 
     .hidden {
       display: none !important;
     }
 
-    /* ===== تصميم الهاتف ===== */
     @media (max-width: 768px) {
       .main-header h1 {
         font-size: 1.5em;
@@ -258,10 +203,6 @@
         padding: 10px 14px;
         font-size: 0.9em;
       }
-
-      .floating-btn.whatsapp {
-        left: 120px;
-      }
     }
   </style>
 </head>
@@ -286,49 +227,41 @@
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="mlbb.png" alt="MLBB" />
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="jawaker.png" alt="Jawaker" />
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="playstation.png" alt="PlayStation" />
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="xbox.png" alt="XBOX" />
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
       <a href="tiktok.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="bigo.png" alt="BIGO LIVE" />
       <h3>BIGO Live</h3>
       <a href="bigo.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="googleplay.png" alt="Google Play" />
       <h3>Google Play</h3>
@@ -336,13 +269,11 @@
     </div>
   </div>
 
-  <!-- زر التليجرام -->
+  <!-- الأزرار العائمة -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank">💬 تواصل تليجرام</a>
+  <a href="https://wa.me/9647700000000" class="floating-btn floating-whatsapp" target="_blank">📱 واتساب</a>
 
-  <!-- زر الواتساب -->
-  <a href="https://wa.me/9647700000000" class="floating-btn whatsapp" target="_blank">📱 واتساب</a>
-
-  <!-- قسم المميزات -->
+  <!-- ✨ قسم المميزات -->
   <section style="background: rgba(0,0,0,0.5); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px;">
     <h2 style="color:#00eaff; margin-bottom: 20px;">لماذا تختارنا؟</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
@@ -362,26 +293,16 @@
   </section>
 
   <!-- قسم آراء العملاء -->
-  <section class="reviews-section">
-    <h2 class="reviews-title">💬 آراء عملائنا</h2>
-    <div class="reviews-container" id="reviewsContainer">
-      <div class="review-card">
-        <p>"خدمة رائعة وسريعة جدًا! أنصح بها الجميع."</p>
-        <span>- أحمد</span>
-      </div>
-      <div class="review-card">
-        <p>"أفضل أسعار وجودة في العراق، شكراً لكم."</p>
-        <span>- علي</span>
-      </div>
-      <div class="review-card">
-        <p>"تعامل راقي وسرعة في الشحن، ممتاز."</p>
-        <span>- سارة</span>
+  <section style="background: rgba(0,0,0,0.4); padding: 30px 20px; margin: 40px auto; max-width: 1000px; border-radius: 10px; text-align: center; overflow: hidden;">
+    <h2 style="color:#00eaff; margin-bottom: 20px;">آراء عملائنا</h2>
+    <div style="overflow: hidden; position: relative;">
+      <div id="testimonial-track" style="display: flex; gap: 20px; transition: transform 0.7s ease;">
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234">@wasv234</a></p>
+    <p>© 2025 - SA~WORKING | للتواصل عبر التليجرام: <a href="https://t.me/wasv234" style="color: gold;">@wasv234</a></p>
   </footer>
 
   <script>
@@ -401,15 +322,52 @@
       });
     }
 
-    // شريط التقييمات المتحرك
-    let currentReview = 0;
-    const reviews = document.querySelectorAll('.review-card');
-    const reviewsContainer = document.getElementById('reviewsContainer');
+    // آراء العملاء
+    const testimonials = [
+      "خدمة ممتازة وسرعة في الشحن! ⭐⭐⭐⭐⭐",
+      "أفضل أسعار وأسرع خدمة، شكراً لكم!",
+      "ثقة وأمان بالتعامل، أنصح الجميع!",
+      "جربت أكثر من مرة وكل مرة أفضل من السابقة!",
+      "دعم سريع ومحترم جداً.",
+      "جودة عالية وسرعة استجابة."
+    ];
 
-    setInterval(() => {
-      currentReview = (currentReview + 1) % reviews.length;
-      reviewsContainer.style.transform = `translateX(-${currentReview * 100}%)`;
-    }, 3000);
+    const track = document.getElementById("testimonial-track");
+    let index = 0;
+
+    function renderTestimonials() {
+      track.innerHTML = "";
+      for (let i = 0; i < 3; i++) {
+        let tIndex = (index + i) % testimonials.length;
+        let div = document.createElement("div");
+        div.textContent = testimonials[tIndex];
+        div.style.background = "#222";
+        div.style.padding = "15px";
+        div.style.borderRadius = "10px";
+        div.style.flex = "1 1 calc(33.33% - 20px)";
+        div.style.color = "#fff";
+        div.style.fontSize = "1em";
+        track.appendChild(div);
+      }
+    }
+
+    function nextTestimonials() {
+      track.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        index = (index + 3) % testimonials.length;
+        renderTestimonials();
+        track.style.transition = "none";
+        track.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          track.style.transition = "transform 0.7s ease";
+          track.style.transform = "translateX(0)";
+        }, 50);
+      }, 700);
+    }
+
+    renderTestimonials();
+    setInterval(nextTestimonials, 4000);
   </script>
+
 </body>
 </html>
