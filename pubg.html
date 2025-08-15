@@ -12,8 +12,6 @@
       background-size: cover;
       color: #fff;
       text-align: center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     .main-header {
       background-color: rgba(0, 0, 0, 0.6);
@@ -35,17 +33,9 @@
     }
     .back-link {
       display: inline-block;
-      margin: 10px 0 20px;
-      padding: 8px 12px;
-      background: rgba(0,0,0,0.5);
-      color: #ffaa00;
-      border-radius: 6px;
+      margin-top: 10px;
+      color: gold;
       text-decoration: none;
-      font-size: 0.95em;
-      transition: background 0.3s;
-    }
-    .back-link:hover {
-      background: rgba(0,0,0,0.8);
     }
     .container {
       display: grid;
@@ -56,10 +46,24 @@
       margin: auto;
     }
     .card {
-      background: rgba(0, 0, 0, 0.5);
+      position: relative;
       border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
       padding: 15px;
+      color: #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: url('pubg.png') center/cover no-repeat;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .card-content {
+      position: relative;
+      z-index: 2;
     }
     .card:hover {
       transform: translateY(-5px);
@@ -83,7 +87,6 @@
       border-radius: 8px;
       font-size: 0.9em;
       transition: background 0.3s;
-      cursor: pointer;
     }
     .button:hover {
       background-color: #00c5e0;
@@ -117,11 +120,11 @@
   </header>
 
   <div class="container" id="packages">
-    <!-- الباقات ستُنشأ تلقائيًا من جافاسكربت -->
+    <!-- الباقات تُنشأ تلقائيًا -->
   </div>
 
   <script>
-    const exchangeRate = 1407; // سعر الصرف
+    const exchangeRate = 1407;
     const packages = [
       { qty: "30", price: 0.46 },
       { qty: "60", price: 0.92 },
@@ -141,29 +144,20 @@
       { qty: "30000 + [10500]", price: 459.73 }
     ];
 
-    function sendTelegram(quantity, price) {
-      const currency = document.getElementById('currency').value;
-      const displayPrice = currency === 'usd'
-        ? `$${price.toFixed(2)}`
-        : `${(price * exchangeRate).toLocaleString()} IQD`;
-      const msg = encodeURIComponent(`مرحباً، أود شحن ${quantity} UC بسعر ${displayPrice}`);
-      const telegramUsername = 'wasv234'; // غيّر حسب معرفك
-      window.open(`https://t.me/${telegramUsername}?text=${msg}`, '_blank');
-    }
-
     function renderPackages(currency) {
       const container = document.getElementById('packages');
       container.innerHTML = "";
       packages.forEach(pkg => {
-        const priceText = currency === 'usd' 
-          ? `$${pkg.price.toFixed(2)}` 
-          : `${(pkg.price * exchangeRate).toLocaleString()} IQD`;
         const card = document.createElement('div');
         card.className = "card";
         card.innerHTML = `
-          <h3>${pkg.qty} UC</h3>
-          <div class="price">${priceText}</div>
-          <div class="button" onclick="sendTelegram('${pkg.qty}', ${pkg.price})">شراء الآن</div>
+          <div class="card-content">
+            <h3>${pkg.qty} UC</h3>
+            <div class="price">${currency === 'usd' 
+              ? `$${pkg.price.toFixed(2)}` 
+              : `${(pkg.price * exchangeRate).toLocaleString()} IQD`}</div>
+            <a href="javascript:void(0)" class="button" onclick="sendTelegram('${pkg.qty}', '${currency === 'usd' ? `$${pkg.price.toFixed(2)}` : `${(pkg.price * exchangeRate).toLocaleString()} IQD`}')">شراء الآن</a>
+          </div>
         `;
         container.appendChild(card);
       });
@@ -174,7 +168,12 @@
       renderPackages(currency);
     }
 
-    // عرض الباقات بالدولار افتراضيًا
+    function sendTelegram(quantity, price) {
+      const msg = encodeURIComponent(`مرحباً، أود شحن ${quantity} من UC بسعر ${price}`);
+      const telegramUsername = 'wasv234';
+      window.open(`https://t.me/${telegramUsername}?text=${msg}`, '_blank');
+    }
+
     renderPackages('usd');
   </script>
 
