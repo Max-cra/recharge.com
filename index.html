@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>THE MAX CHARGE - TMC</title>
   <style>
-    /* ===== أسلوب الصفحة الأساسي (محفوظ مع تحسينات بسيطة) ===== */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: 
-        linear-gradient(to bottom, rgba(30, 42, 56, 0.85), rgba(46, 62, 82, 0.85)),
-        url('background.jpg') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center fixed, linear-gradient(to bottom, #1e2a38, #2e3e52);
       background-size: cover;
       color: #fff;
       text-align: center;
@@ -199,7 +196,15 @@
   </style>
 </head>
 <body>
-
+ <!-- مبدل العملة -->
+  <div id="currency-switcher" style="position:fixed;top:15px;right:15px;z-index:2000;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;">
+    <label for="currencySelect" style="color:#fff;font-size:0.9em;margin-right:4px;">💱 العملة:</label>
+    <select id="currencySelect" style="padding:4px 6px;border-radius:4px;border:none;font-size:0.9em;">
+      <option value="USD">الدولار الأمريكي</option>
+      <option value="IQD">الدينار العراقي</option>
+    </select>
+  </div>
+  
   <header class="main-header" id="mainHeader">
     <h1>THE MAX CHARGE - TMC</h1>
     <p>أفضل خدمات شحن الألعاب والتطبيقات داخل العراق</p>
@@ -309,6 +314,15 @@
   </footer>
 
   <script>
+  // مبدل العملة
+    let selectedCurrency = localStorage.getItem("currency") || "USD";
+    const currencySelect = document.getElementById("currencySelect");
+    currencySelect.value = selectedCurrency;
+    currencySelect.addEventListener("change", function() {
+      selectedCurrency = this.value;
+      localStorage.setItem("currency", selectedCurrency);
+      console.log("العملة المختارة:", selectedCurrency);
+    });
     /********* Robust filterItems: works whether called from onclick or via event *********/
     function filterItems(buttonOrEvent, type) {
       try {
@@ -443,4 +457,5 @@
   </script>
 </body>
 </html>
+
 
