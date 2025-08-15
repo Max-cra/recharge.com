@@ -2,122 +2,180 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>شحن PUBG Mobile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شحن شدات PUBG - THE MAX CHARGE</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #1e2a38, #2e3e52);
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
       text-align: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .main-header {
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
     }
-
-    h1 {
+    .main-header h1 {
       color: #00eaff;
-      margin-bottom: 30px;
+      margin: 0;
+      font-size: 1.8em;
     }
-
-    .cards {
+    .currency-switch {
+      margin: 15px 0;
+    }
+    .currency-switch select {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1em;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 10px 0 20px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.5);
+      color: #ffaa00;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: background 0.3s;
+    }
+    .back-link:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 20px;
+      padding: 20px;
       max-width: 900px;
       margin: auto;
     }
-
     .card {
-      background-color: rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .card:hover {
-      transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
     }
-
     .card h3 {
-      margin: 10px 0;
-      color: #fff;
-      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #ffaa00;
     }
-
-    .card .price {
+    .price {
       font-size: 1.1em;
-      color: gold;
-      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #00eaff;
     }
-
-    .back-link {
+    .button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 12px 25px;
-      background-color: #ffaa00;
-      color: #fff;
-      border-radius: 25px;
+      padding: 8px 14px;
+      background-color: #00eaff;
+      color: black;
       text-decoration: none;
-      font-size: 1em;
+      border-radius: 8px;
+      font-size: 0.9em;
       transition: background 0.3s;
+      cursor: pointer;
     }
-
-    .back-link:hover {
-      background-color: #ff9500;
+    .button:hover {
+      background-color: #00c5e0;
     }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 1.5em;
+    @media (max-width: 480px) {
+      .container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
       }
-      .cards {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
+      .card {
+        flex: 0 0 80%;
+        scroll-snap-align: start;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>اختر كمية UC لشحن PUBG Mobile</h1>
+  <header class="main-header">
+    <h1>شحن شدات PUBG</h1>
+    <div class="currency-switch">
+      <label for="currency">اختر العملة:</label>
+      <select id="currency" onchange="updatePrices()">
+        <option value="usd">دولار أمريكي</option>
+        <option value="iqd">دينار عراقي</option>
+      </select>
+    </div>
+    <a href="index.html" class="back-link">⬅ العودة للصفحة الرئيسية</a>
+  </header>
 
-  <div class="cards">
-    <div class="card" onclick="sendTelegram('60 UC', '1.5 $')">
-      <h3>60 UC</h3>
-      <div class="price">1.5 $</div>
-    </div>
-    <div class="card" onclick="sendTelegram('325 UC', '6.5 $')">
-      <h3>325 UC</h3>
-      <div class="price">6.5 $</div>
-    </div>
-    <div class="card" onclick="sendTelegram('660 UC', '11.5 $')">
-      <h3>660 UC</h3>
-      <div class="price">11.5 $</div>
-    </div>
-    <div class="card" onclick="sendTelegram('1800 UC', '28 $')">
-      <h3>1800 UC</h3>
-      <div class="price">28 $</div>
-    </div>
-    <div class="card" onclick="sendTelegram('3850 UC', '55 $')">
-      <h3>3850 UC</h3>
-      <div class="price">55 $</div>
-    </div>
-    <div class="card" onclick="sendTelegram('8100 UC', '100 $')">
-      <h3>8100 UC</h3>
-      <div class="price">100 $</div>
-    </div>
+  <div class="container" id="packages">
+    <!-- الباقات ستُنشأ تلقائيًا من جافاسكربت -->
   </div>
 
-  <a href="index.html" class="back-link">⬅ العودة للصفحة الرئيسية</a>
-
   <script>
+    const exchangeRate = 1407; // سعر الصرف
+    const packages = [
+      { qty: "30", price: 0.46 },
+      { qty: "60", price: 0.92 },
+      { qty: "120", price: 1.84 },
+      { qty: "180", price: 2.76 },
+      { qty: "300 + [25]", price: 4.60 },
+      { qty: "310 + [26]", price: 4.75 },
+      { qty: "600 + [60]", price: 9.19 },
+      { qty: "625 + [63]", price: 9.58 },
+      { qty: "1065 + [107]", price: 16.32 },
+      { qty: "1500 + [300]", price: 22.99 },
+      { qty: "3000 + [850]", price: 45.97 },
+      { qty: "6000 + [2100]", price: 91.95 },
+      { qty: "12000 + [4200]", price: 183.89 },
+      { qty: "18000 + [6300]", price: 275.84 },
+      { qty: "24000 + [8400]", price: 367.78 },
+      { qty: "30000 + [10500]", price: 459.73 }
+    ];
+
     function sendTelegram(quantity, price) {
-      const msg = encodeURIComponent(`مرحباً، أود شحن ${quantity} من UC بسعر ${price}`);
-      const telegramUsername = 'wasv234'; // عدّل حسب المعرف الخاص بك
+      const currency = document.getElementById('currency').value;
+      const displayPrice = currency === 'usd'
+        ? `$${price.toFixed(2)}`
+        : `${(price * exchangeRate).toLocaleString()} IQD`;
+      const msg = encodeURIComponent(`مرحباً، أود شحن ${quantity} UC بسعر ${displayPrice}`);
+      const telegramUsername = 'wasv234'; // غيّر حسب معرفك
       window.open(`https://t.me/${telegramUsername}?text=${msg}`, '_blank');
     }
+
+    function renderPackages(currency) {
+      const container = document.getElementById('packages');
+      container.innerHTML = "";
+      packages.forEach(pkg => {
+        const priceText = currency === 'usd' 
+          ? `$${pkg.price.toFixed(2)}` 
+          : `${(pkg.price * exchangeRate).toLocaleString()} IQD`;
+        const card = document.createElement('div');
+        card.className = "card";
+        card.innerHTML = `
+          <h3>${pkg.qty} UC</h3>
+          <div class="price">${priceText}</div>
+          <div class="button" onclick="sendTelegram('${pkg.qty}', ${pkg.price})">شراء الآن</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function updatePrices() {
+      const currency = document.getElementById('currency').value;
+      renderPackages(currency);
+    }
+
+    // عرض الباقات بالدولار افتراضيًا
+    renderPackages('usd');
   </script>
 
 </body>
