@@ -8,23 +8,9 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
+      background: linear-gradient(to bottom, #1e2a38, #2e3e52);
       color: #fff;
       text-align: center;
-    }
-
-    /* طبقة شفافية فوق الخلفية */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(30, 42, 56, 0.8);
-      z-index: -1;
     }
 
     /* ===== رأس الصفحة ===== */
@@ -226,55 +212,32 @@
       display: none !important;
     }
 
-    /* ===== تصميم الهاتف ===== */
+    /* === تحسين عرض البطاقات للجوال === */
     @media (max-width: 768px) {
-      .main-header h1 {
-        font-size: 1.5em;
-      }
-
-      .main-header p {
-        font-size: 0.9em;
-      }
-
-      .section-title {
-        font-size: 1.3em;
-      }
-
-      .filter-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0 20px;
-      }
-
-      .filter-buttons button {
-        width: 100%;
-        font-size: 1em;
-      }
-
       .container {
-        grid-template-columns: 1fr !important;
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
         padding: 15px;
+        scroll-snap-type: x mandatory;
       }
-
       .card {
-        padding: 10px;
+        flex: 0 0 auto;
+        width: 200px;
+        scroll-snap-align: start;
       }
-
-      .button {
-        font-size: 1em;
-        padding: 10px 20px;
+      .reviews-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        scroll-snap-type: x mandatory;
       }
-
-      .floating-btn {
-        bottom: 15px;
-        left: 15px;
-        padding: 10px 14px;
-        font-size: 0.9em;
-      }
-
-      .floating-btn.whatsapp {
-        left: 120px;
+      .review-card {
+        flex: 0 0 auto;
+        width: 250px;
+        scroll-snap-align: start;
+        background: rgba(0,0,0,0.4);
+        border-radius: 10px;
       }
     }
   </style>
@@ -300,49 +263,41 @@
       <h3>PUBG Mobile</h3>
       <a href="pubg.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="freefire.png" alt="Free Fire" />
       <h3>Free Fire</h3>
       <a href="freefire.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="mlbb.png" alt="MLBB" />
       <h3>MLBB</h3>
       <a href="mlbb.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="jawaker.png" alt="Jawaker" />
       <h3>جواكر</h3>
       <a href="jawaker.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="playstation.png" alt="PlayStation" />
       <h3>PlayStation</h3>
       <a href="playstation.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="game">
       <img src="xbox.png" alt="XBOX" />
       <h3>XBOX</h3>
       <a href="xbox.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="tiktok.png" alt="TikTok" />
       <h3>TikTok</h3>
       <a href="tiktok.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="bigo.png" alt="BIGO LIVE" />
       <h3>BIGO Live</h3>
       <a href="bigo.html" class="button">أريد الشحن</a>
     </div>
-
     <div class="card" data-type="app">
       <img src="googleplay.png" alt="Google Play" />
       <h3>Google Play</h3>
@@ -352,7 +307,6 @@
 
   <!-- زر التليجرام -->
   <a href="https://t.me/wasv234" class="floating-btn" target="_blank">💬 تواصل تليجرام</a>
-
   <!-- زر الواتساب -->
   <a href="https://wa.me/9647700000000" class="floating-btn whatsapp" target="_blank">📱 واتساب</a>
 
@@ -415,14 +369,18 @@
       });
     }
 
-    // شريط التقييمات المتحرك
-    let currentReview = 0;
-    const reviews = document.querySelectorAll('.review-card');
-    const reviewsContainer = document.getElementById('reviewsContainer');
-
+    // شريط التقييمات المتحرك بشكل أفقي تلقائي
+    let scrollAmount = 0;
     setInterval(() => {
-      currentReview = (currentReview + 1) % reviews.length;
-      reviewsContainer.style.transform = `translateX(-${currentReview * 100}%)`;
+      const container = document.getElementById('reviewsContainer');
+      scrollAmount += 270; // عرض البطاقة + المسافة
+      if (scrollAmount >= container.scrollWidth - container.clientWidth) {
+        scrollAmount = 0;
+      }
+      container.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
     }, 3000);
   </script>
 </body>
