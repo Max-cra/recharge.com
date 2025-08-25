@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شحن جواهر فري فاير - THE MAX CHARGE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    header h1 { margin: 0; color: #00eaff; }
+
+    .currency-switch {
+      margin: 15px;
+    }
+
+    .currency-switch select {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.55);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-6px); }
+
+    .card img {
+      max-width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 { margin: 10px 0; color: #ffaa00; }
+
+    .price { font-size: 1.1em; margin-bottom: 10px; }
+
+    .button {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #00eaff;
+      color: #000;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .button:hover { background: #00c5e0; }
+
+    .back-link {
+      display: block;
+      margin: 20px;
+      color: #00eaff;
+      text-decoration: none;
+    }
+
+    @media(max-width:480px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>شحن جواهر فري فاير</h1>
+  </header>
+
+  <div class="currency-switch">
+    <label for="currency">اختر العملة:</label>
+    <select id="currency" onchange="updatePrices()">
+      <option value="USD">USD</option>
+      <option value="IQD">IQD</option>
+    </select>
+  </div>
+
+  <div class="container" id="offersContainer"></div>
+
+  <a href="index.html" class="back-link">⬅ العودة للصفحة الرئيسية</a>
+
+  <script>
+    const exchangeRate = 1407; // 1 USD = 1407 IQD
+    const offers = [
+      { quantity: "100", price: 1.2 },
+      { quantity: "210", price: 2.3 },
+      { quantity: "530", price: 5.7 },
+      { quantity: "1080", price: 11.3 },
+      { quantity: "2200", price: 22.5 }
+    ];
+
+    function renderOffers(currency) {
+      const container = document.getElementById('offersContainer');
+      container.innerHTML = "";
+      offers.forEach(offer => {
+        let displayPrice;
+        if (currency === "IQD") {
+          displayPrice = (offer.price * exchangeRate).toLocaleString() + " IQD";
+        } else {
+          displayPrice = "$" + offer.price.toFixed(2);
+        }
+
+        const card = document.createElement('div');
+        card.className = "card";
+        card.innerHTML = `
+          <img src="freefire.png" alt="Free Fire">
+          <h3>${offer.quantity} 💎</h3>
+          <div class="price">${displayPrice}</div>
+          <a href="#" class="button" onclick="sendTelegram('${offer.quantity}', '${displayPrice}')">شراء الآن</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function updatePrices() {
+      const currency = document.getElementById("currency").value;
+      renderOffers(currency);
+    }
+
+    function sendTelegram(quantity, price) {
+      const msg = encodeURIComponent(\`مرحباً، أود شحن ${quantity} جواهر من فري فاير بسعر ${price}\`);
+      const telegramUsername = 'wasv234';
+      window.open(\`https://t.me/${telegramUsername}?text=${msg}\`, '_blank');
+    }
+
+    // render default
+    renderOffers("USD");
+  </script>
+</body>
+</html>
