@@ -22,10 +22,7 @@
 
     header h1 { margin: 0; color: #00eaff; }
 
-    .currency-switch {
-      margin: 15px;
-    }
-
+    .currency-switch { margin: 15px; }
     .currency-switch select {
       padding: 8px 14px;
       border-radius: 8px;
@@ -57,7 +54,6 @@
     }
 
     .card h3 { margin: 10px 0; color: #ffaa00; }
-
     .price { font-size: 1.1em; margin-bottom: 10px; }
 
     .button {
@@ -80,9 +76,7 @@
     }
 
     @media(max-width:480px) {
-      .container {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .container { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -94,7 +88,7 @@
 
   <div class="currency-switch">
     <label for="currency">اختر العملة:</label>
-    <select id="currency" onchange="updatePrices()">
+    <select id="currency">
       <option value="USD">USD</option>
       <option value="IQD">IQD</option>
     </select>
@@ -137,19 +131,18 @@
       });
     }
 
-    function updatePrices() {
-      const currency = document.getElementById("currency").value;
-      renderOffers(currency);
-    }
-
     function sendTelegram(quantity, price) {
-      const msg = encodeURIComponent(\`مرحباً، أود شحن ${quantity} جواهر من فري فاير بسعر ${price}\`);
+      const msg = encodeURIComponent(`مرحباً، أود شحن ${quantity} جواهر من فري فاير بسعر ${price}`);
       const telegramUsername = 'wasv234';
-      window.open(\`https://t.me/${telegramUsername}?text=${msg}\`, '_blank');
+      window.open(`https://t.me/${telegramUsername}?text=${msg}`, '_blank');
     }
 
-    // render default
-    renderOffers("USD");
+    document.addEventListener("DOMContentLoaded", function() {
+      renderOffers("USD");
+      document.getElementById("currency").addEventListener("change", function() {
+        renderOffers(this.value);
+      });
+    });
   </script>
 </body>
 </html>
